@@ -8,6 +8,9 @@ export class SimpleCdkAppStack extends cdk.Stack {
     const bucket = new Bucket(this, "MySimpleAppBucket", {
       encryption: BucketEncryption.S3_MANAGED
     });
-    // The code that defines your stack goes here
+    new cdk.CfnOutput(this, 'MySimpleAppBucketNameExport', {
+      value: bucket.bucketName,
+      exportName: "MySimpleAppBucketName"
+    })
   }
 }
